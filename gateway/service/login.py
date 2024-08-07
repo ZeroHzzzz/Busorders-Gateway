@@ -16,12 +16,13 @@ def login(phone, pwd):
     try:
         response = requests.post(api.login_url, headers=headers, data=json.dumps(ret))
         response.raise_for_status()
-        
         status_code = response.status_code
         if status_code == 200:
             return status_code, msg.msg_success, response.json()
         elif status_code == 400:
             return status_code, msg.msg_wrongpwd, None
+        elif status_code == 404:
+            return status_code, msg.msg_notfound, None
         else:
             return status_code, msg.msg_unknown, None
 
