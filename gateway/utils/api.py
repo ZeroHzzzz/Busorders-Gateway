@@ -1,5 +1,6 @@
 base_api = "https://api.pinbayun.com"
-login_url = base_api + "/api/v4/staff/auths/login/"
+loginByPhone_url = base_api + "/api/v4/staff/auths/login/"
+loginByWX_url = base_api + "/api/v1/staff/auths/wx_auth/"
 
 bus_info_url = base_api + "/api/v2/staff/shuttlebus/"
 bus_time_url = base_api + "/api/v2/staff/shuttlebus/{id}/bustimes/"
