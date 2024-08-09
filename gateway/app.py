@@ -2,10 +2,11 @@ import yaml
 from flask import Flask, g, request
 import logging
 import time
+from utils import utils
 from api.routes import api
 from api.bus.routes import bus
 from api.user.routes import user
-
+from utils import msg
 def load_config(config_file):
     with open(config_file, 'r') as f:
         return yaml.safe_load(f)
@@ -69,7 +70,12 @@ def create_app(config_file='gateway\config.yaml'):
         logger.info(log_message)
 
         return response
-
+    
+    @app.errorhandler(405)
+    def method_not_allowed(e):
+        logger.error(f"Method Not Allowed: {e}")
+        return utils.generate_response(405, msg.msg_method_not_allowed), 405
+    
     return app
 
 if __name__ == "__main__":

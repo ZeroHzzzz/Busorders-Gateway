@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 api = Blueprint('api', __name__)
 
 @api.route('/login/phone', methods=['POST'])
-def loginHandler():
+def loginByPhoneHandler():
     try:
         data = request.get_json()
         if not data:
@@ -32,7 +32,7 @@ def loginHandler():
 
 
 @api.route('/login/wx', methods=['POST'])
-def loginHandler():
+def loginByWXHandler():
     try:
         data = request.get_json()
         if not data:
