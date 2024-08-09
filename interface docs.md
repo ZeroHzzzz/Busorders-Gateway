@@ -27,9 +27,9 @@ Base URLs:
 
 # Default
 
-## POST 登录
+## POST 手机密码登录
 
-POST /api/login
+POST /api/login/phone
 
 > Body 请求参数
 
@@ -413,6 +413,55 @@ POST /api/login
 ## GET 测试接口
 
 GET /api/test
+
+> 返回示例
+
+> 200 Response
+
+```json
+{
+  "code": 0,
+  "message": "string",
+  "data": {}
+}
+```
+
+### 返回结果
+
+|状态码|状态码含义|说明|数据模型|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|成功|Inline|
+
+### 返回数据结构
+
+状态码 **200**
+
+|名称|类型|必选|约束|中文名|说明|
+|---|---|---|---|---|---|
+|» code|number|true|none||none|
+|» message|string|true|none||none|
+|» data|object|true|none||none|
+
+## POST 微信登录
+
+POST /api/login/wx
+
+> Body 请求参数
+
+```json
+{
+  "corpcode": "string",
+  "openid": "string"
+}
+```
+
+### 请求参数
+
+|名称|位置|类型|必选|说明|
+|---|---|---|---|---|
+|body|body|object| 否 |none|
+|» corpcode|body|string| 是 |none|
+|» openid|body|string| 是 |none|
 
 > 返回示例
 
